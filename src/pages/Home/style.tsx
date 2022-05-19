@@ -11,6 +11,7 @@ const LowerContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 
   gap: 9px;
 `;
@@ -22,26 +23,25 @@ const Banner = styled.div`
   justify-content: center;
   align-items: center;
 
-  margin-top: 60px;
+  margin: 23px 0 13px 0;
 
   background-image: url(${BannerIcon});
   background-repeat: no-repeat;
   background-size: cover;
 
   box-shadow: 4px 1px 4px rgba(0, 0, 0, 0.25);
-
-  margin-bottom: 20px;
 `;
 
 const TitleContainer = styled.div`
-  margin: 9px 0 40px 5px;
-  font-family: "Times New Roman", Times, serif;
+  margin: 9px 0 0px 30px;
   h1 {
     color: #02182b;
+    font-family: "Patua One", "Times New Roman", Times, serif;
   }
 
   p {
     color: #747474ce;
+    font-family: "Times New Roman", serif;
   }
 `;
 

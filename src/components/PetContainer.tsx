@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import exempleImg from "../assets/background3.jpg";
+import exempleImg from "../assets/banner.jpg";
 
 export default function PetContainer() {
   return (
@@ -36,7 +36,7 @@ const Container = styled.div`
 
 const ImageContainer = styled.div`
   width: 100%;
-  height: 60%;
+  height: 70%;
   &:hover {
     opacity: 0.8;
   }
@@ -61,14 +61,16 @@ const DescriptionContainer = styled.div`
 
   margin-top: 12px;
   h1 {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 700;
+    font-family: "Patua One", "Times New Roman", Times, serif;
+    color: #108181;
+    color: #378dd8;
 
-    color: #02182b;
     cursor: pointer;
-    :hover {
-      color: #0b3050;
-    }
+    /*  :hover {
+      color: #02182b;
+    } */
   }
   p {
     font-weight: 500;

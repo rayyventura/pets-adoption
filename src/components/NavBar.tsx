@@ -21,6 +21,8 @@ const Options = styled.div`
   justify-content: center;
   align-items: center;
   gap: 5px;
+
+  margin-bottom: 40px;
   .adopt {
     background-color: #dd702ca6;
     &:hover {
@@ -37,7 +39,7 @@ const Options = styled.div`
 
 const Button = styled.button`
   all: unset;
-  width: 150px;
+  width: 45%;
 
   padding: 8px;
 

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Logo from "./Logo";
 import { Options } from "./NavBar";
+import User from "../assets/user.png";
 
 export default function Header({ loggedIn }: any) {
   const navigate = useNavigate();
@@ -15,7 +16,11 @@ export default function Header({ loggedIn }: any) {
           <Login onClick={() => navigate("/logar")}>Entar</Login>
         </Options>
       ) : (
-        <UserLogo>Profile</UserLogo>
+        <UserLogo
+          src={User}
+          alt="user profile"
+          onClick={() => navigate("/perfil")}
+        />
       )}
     </HeaderContainer>
   );
@@ -33,9 +38,10 @@ const HeaderContainer = styled.header`
 
   padding: 5px 60px;
 
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
 
-  background-color: white;
+  z-index: 3;
+  background-color: #f3f4f6;
 `;
 
 const Login = styled.button`
@@ -69,6 +75,11 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const UserLogo = styled.div`
+const UserLogo = styled.img`
+  cursor: pointer;
   border-radius: 50%;
+  width: 53px;
+  height: 53px;
+
+  object-fit: cover;
 `;

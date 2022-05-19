@@ -1,10 +1,12 @@
 import React from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import LogoIcon from "../assets/logo.png";
 
 export default function Logo({ type }: any) {
+  const navigate = useNavigate();
   return (
-    <LogoContainer type={type}>
+    <LogoContainer type={type} onClick={() => navigate("/")}>
       <img src={LogoIcon} alt="logo" />
       <LogoName>
         <p className="adota">adota</p>
@@ -19,6 +21,8 @@ const LogoContainer = styled.div<{ type: string }>`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  gap: 0;
+  cursor: pointer;
 
   font-family: "Titan One", "cursive";
 

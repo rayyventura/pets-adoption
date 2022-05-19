@@ -26,6 +26,9 @@ export default function Home() {
       </TitleContainer>
       <LowerContainer>
         <PetContainer />
+        <PetContainer />
+        <PetContainer />
+        <PetContainer />
       </LowerContainer>
     </Container>
   );
