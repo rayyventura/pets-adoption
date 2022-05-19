@@ -1,26 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Logo from "./Logo";
-import { Options } from "./NavBar";
 import User from "../assets/user.png";
+import useAuth from "../hooks/useAuth";
 
-export default function Header({ loggedIn }: any) {
+export default function Header() {
   const navigate = useNavigate();
+  const [loggedIn, setLoggedIn] = useState(false);
+  const { auth } = useAuth();
+
+  useEffect(() => {
+    if (auth) {
+      setLoggedIn(true);
+    }
+  }, [auth]);
   return (
     <HeaderContainer>
       <Logo type="header" />
       {loggedIn ? (
-        <Options>
-          <Button onClick={() => navigate("/cadastrar")}>Cadastre-se</Button>
-          <Login onClick={() => navigate("/logar")}>Entar</Login>
-        </Options>
-      ) : (
         <UserLogo
           src={User}
           alt="user profile"
           onClick={() => navigate("/perfil")}
         />
+      ) : (
+        <Options>
+          <Button onClick={() => navigate("/cadastrar")}>Cadastre-se</Button>
+          <Login onClick={() => navigate("/logar")}>Entar</Login>
+        </Options>
       )}
     </HeaderContainer>
   );
@@ -82,4 +90,11 @@ const UserLogo = styled.img`
   height: 53px;
 
   object-fit: cover;
+`;
+
+const Options = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 `;

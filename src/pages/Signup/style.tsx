@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Logo from "../../assets/background3.jpg";
 
 const Container = styled.div`
   height: 100vh;
@@ -21,7 +20,7 @@ const LeftContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 35px;
+  gap: 10px;
 
   background-color: #e2dbd6b3;
 
@@ -50,7 +49,7 @@ const LeftContainer = styled.div`
       width: 340px;
     }
   }
-  @media (max-width: 1300px) {
+  @media (max-width: 900px) {
     width: 100%;
   }
 `;
@@ -60,19 +59,15 @@ const RightContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
 
   img {
     width: 100%;
     height: 100vh;
   }
 
-  background-repeat: no-repeat;
-  background-size: cover;
-
   box-shadow: -7px 0px 3px rgba(0, 0, 0, 0.075);
 
-  @media (max-width: 1300px) {
+  @media (max-width: 900px) {
     display: none;
     width: 0%;
   }

@@ -4,21 +4,17 @@ import { Banner, Container, LowerContainer, TitleContainer } from "./style";
 import NavBar from "../../components/NavBar";
 import PetContainer from "../../components/PetContainer";
 import useAuth from "../../hooks/useAuth";
+import BannerIcon from "../../assets/banner.jpg";
 
 export default function Home() {
   const { auth } = useAuth();
-  const [loggedIn, setLoggedIn] = useState(false);
-
-  useEffect(() => {
-    if (auth) {
-      setLoggedIn(true);
-    }
-  }, [auth]);
 
   return (
     <Container>
-      <Header loggedIn={loggedIn} />
-      <Banner />
+      <Header />
+      <Banner>
+        <img src={BannerIcon} alt="vários cachorros de diferentes raças" />
+      </Banner>
       <NavBar />
       <TitleContainer>
         <h1>Adote um Pet. Transforme vidas!</h1>

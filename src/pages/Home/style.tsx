@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import BannerIcon from "../../assets/banner.jpg";
 
 const Container = styled.div`
   height: 100vh;
@@ -25,7 +24,10 @@ const Banner = styled.div`
 
   margin: 23px 0 13px 0;
 
-  background-image: url(${BannerIcon});
+  img {
+    height: 100%;
+    width: 100%;
+  }
   background-repeat: no-repeat;
   background-size: cover;
 
