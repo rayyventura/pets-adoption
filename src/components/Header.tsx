@@ -68,6 +68,10 @@ const HeaderContainer = styled.header`
 
   z-index: 3;
   background-color: #f3f4f6;
+
+  @media (max-width: 500px) {
+    padding: 3px 10px;
+  }
 `;
 
 const Login = styled.button`
@@ -79,6 +83,10 @@ const Login = styled.button`
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
+
+  @media (max-width: 500px) {
+    font-size: 14px;
+  }
 `;
 
 const Button = styled.button`
@@ -99,6 +107,11 @@ const Button = styled.button`
   background-color: #dd702c;
 
   cursor: pointer;
+
+  @media (max-width: 500px) {
+    padding: 3px;
+    font-size: 14px;
+  }
 `;
 
 const UserLogo = styled.img`
@@ -134,6 +147,11 @@ const UserOptions = styled.div`
 
   div {
     cursor: pointer;
+  }
+
+  @media (max-width: 510px) {
+    right: 5px;
+    top: 65px;
   }
 `;
 

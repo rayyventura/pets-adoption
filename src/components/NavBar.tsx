@@ -54,6 +54,15 @@ const Button = styled.button`
   align-items: center;
 
   cursor: pointer;
+
+  @media (max-width: 500px) {
+    padding: 3px 10px;
+    padding: 2px;
+    font-size: 14px;
+  }
+  @media (max-width: 290px) {
+    font-size: 12px;
+  }
 `;
 
 export { Options };

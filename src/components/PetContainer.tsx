@@ -36,8 +36,8 @@ export default function PetContainer({
 }
 
 const Container = styled.div`
-  width: 220px;
-  height: 335px;
+  width: 205px;
+  height: 315px;
 
   box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
 
@@ -47,6 +47,11 @@ const Container = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
+
+  @media (max-width: 510px) {
+    width: 190px;
+    height: 295px;
+  }
 `;
 
 const ImageContainer = styled.div`
@@ -62,6 +67,8 @@ const ImageContainer = styled.div`
 
     border-top-right-radius: 9px;
     border-top-left-radius: 9px;
+  }
+  @media (max-width: 510px) {
   }
 `;
 
@@ -88,5 +95,7 @@ const DescriptionContainer = styled.div`
     font-weight: 500;
     font-size: 18px;
     color: #747474ce;
+  }
+  @media (max-width: 510px) {
   }
 `;

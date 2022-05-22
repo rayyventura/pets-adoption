@@ -24,7 +24,7 @@ const LowerContainer = styled.div`
 `;
 const Banner = styled.div`
   width: 100%;
-  height: 450px;
+  height: 350px;
 
   display: flex;
   justify-content: center;
@@ -35,6 +35,20 @@ const Banner = styled.div`
   img {
     height: 100%;
     width: 60%;
+    @media (max-width: 910px) {
+      width: 50%;
+    }
+  }
+  @media (max-width: 910px) {
+    height: 200px;
+  }
+  @media (max-width: 510px) {
+    margin-top: 44px;
+    height: 150px;
+  }
+  @media (max-width: 290px) {
+    margin-top: 64px;
+    height: 100px;
   }
 `;
 
@@ -48,6 +62,12 @@ const TitleContainer = styled.div`
   p {
     color: #747474ce;
     font-family: "Times New Roman", serif;
+  }
+  @media (max-width: 500px) {
+    margin: 40px 0 0px 15px;
+    h1 {
+      font-size: 19px;
+    }
   }
 `;
 
