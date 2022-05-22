@@ -21,7 +21,7 @@ export function AuthProvider({ children }: AuxProps) {
   }
 
   return (
-    <AuthContext.Provider value={{ auth, signin }}>
+    <AuthContext.Provider value={{ auth, signin, setAuth }}>
       {children}
     </AuthContext.Provider>
   );

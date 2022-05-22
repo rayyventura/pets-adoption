@@ -12,6 +12,13 @@ const Container = styled.div`
     width: 100%;
     padding: 0 5px;
   }
+  .load {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 60px;
+  }
 `;
 
 const UpperContainer = styled.div`

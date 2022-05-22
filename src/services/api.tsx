@@ -47,12 +47,8 @@ async function sharePet({ token, data }: SharePet) {
   const config = createConfig(token);
   await baseAPI.post("pets/share", data, config);
 }
-async function getPets(token: string, page: number) {
-  const config = createConfig(token);
-  const pets = await baseAPI.get<PetData>(
-    `pets/${page ? page * 10 : 0}`,
-    config
-  );
+async function getPets(page: number) {
+  const pets = await baseAPI.get<PetData>(`pets/${page ? page * 10 : 0}`);
 
   return pets;
 }

@@ -45,7 +45,7 @@ export default function Adoption() {
 
   async function loadPets() {
     try {
-      const pets = auth && (await api.getPets(auth, page));
+      const pets = auth && (await api.getPets(page));
       setData(data.concat([...pets.data]));
       if (!data) return;
       setPage(page + 1);
@@ -248,12 +248,22 @@ export default function Adoption() {
       <InfiniteScroll
         pageStart={filterMode ? filteredPage : page}
         loadMore={filterMode ? () => getFilteredPets : loadPets}
-        hasMore={data?.length < page * 10 ? false : true}
+        hasMore={
+          filterMode
+            ? filteredData?.length < filteredPage * 10
+              ? false
+              : true
+            : data?.length < page * 10
+            ? false
+            : true
+        }
         loader={
-          <h3>
-            {""}
-            <ThreeDots color="#02182b" height={13} width={100} />
-          </h3>
+          <div className="load">
+            <h3>
+              {""}
+              <ThreeDots color="#02182b" height={13} width={100} />
+            </h3>
+          </div>
         }
       >
         <LowerContainer>

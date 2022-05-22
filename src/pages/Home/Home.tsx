@@ -18,7 +18,7 @@ export default function Home() {
 
   async function loadPets() {
     try {
-      const pets = auth && (await api.getPets(auth, page));
+      const pets = auth && (await api.getPets(page));
       setData(data.concat([...pets.data]));
       if (!data) return;
       setPage(page + 1);
@@ -26,12 +26,6 @@ export default function Home() {
       console.log(error);
     }
   }
-  useEffect(() => {
-    if (!auth) {
-      navigate("/logar");
-      return;
-    }
-  }, []);
 
   return (
     <Container>
