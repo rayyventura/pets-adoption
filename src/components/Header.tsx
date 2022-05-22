@@ -4,26 +4,43 @@ import styled from "styled-components";
 import Logo from "./Logo";
 import User from "../assets/user.png";
 import useAuth from "../hooks/useAuth";
+import { Divider } from "@mui/material";
 
 export default function Header() {
   const navigate = useNavigate();
   const [loggedIn, setLoggedIn] = useState(false);
   const { auth } = useAuth();
+  const [profileOption, setProfileOption] = useState(false);
 
   useEffect(() => {
     if (auth) {
       setLoggedIn(true);
     }
   }, [auth]);
+
+  function logout() {
+    localStorage.removeItem("auth");
+    window.location.reload();
+  }
   return (
     <HeaderContainer>
       <Logo type="header" />
+
       {loggedIn ? (
-        <UserLogo
-          src={User}
-          alt="user profile"
-          onClick={() => navigate("/perfil")}
-        />
+        <div onMouseLeave={() => setProfileOption(false)}>
+          <UserLogo
+            src={User}
+            alt="user profile"
+            onClick={() => setProfileOption(!profileOption)}
+          />
+          {profileOption && (
+            <UserOptions>
+              <div onClick={() => navigate("/perfil")}>Meu perfil</div>
+              <Divider style={{ width: "100%" }} />
+              <div onClick={() => logout()}>Sair</div>
+            </UserOptions>
+          )}
+        </div>
       ) : (
         <Options>
           <Button onClick={() => navigate("/cadastrar")}>Cadastre-se</Button>
@@ -90,6 +107,33 @@ const UserLogo = styled.img`
   height: 53px;
 
   object-fit: cover;
+`;
+
+const UserOptions = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 12px;
+
+  background-color: white;
+  border-radius: 9px;
+
+  position: absolute;
+  right: 35px;
+  top: 65px;
+
+  padding: 12px;
+
+  font-family: "Times New Roman", Times, serif;
+  color: #686868;
+  font-weight: 600;
+
+  font-size: 18px;
+
+  div {
+    cursor: pointer;
+  }
 `;
 
 const Options = styled.div`

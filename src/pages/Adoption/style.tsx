@@ -6,14 +6,7 @@ const Container = styled.div`
   align-items: center;
   flex-direction: column;
   padding: 0 60px;
-  .title {
-    font-family: "Patua One", "Times New Roman", Times, serif;
-    font-size: 18px;
-    @media (max-width: 670px) {
-      font-size: 15px;
-      width: 100%;
-    }
-  }
+
   @media (max-width: 670px) {
     font-size: 18px;
     width: 100%;
@@ -24,7 +17,7 @@ const Container = styled.div`
 const UpperContainer = styled.div`
   width: 100%;
 
-  padding-top: 100px;
+  margin-top: 20px;
 
   display: flex;
   justify-content: space-between;
@@ -33,12 +26,12 @@ const UpperContainer = styled.div`
 
   position: relative;
 
-  margin-bottom: 20px;
   img {
     width: 53px;
     margin-right: 25px;
     cursor: pointer;
   }
+
   @media (max-width: 670px) {
     font-size: 18px;
     width: 100%;
@@ -46,6 +39,16 @@ const UpperContainer = styled.div`
     img {
       margin-right: 0px;
     }
+  }
+`;
+const Title = styled.h1`
+  color: #02182b;
+  font-family: "Patua One", "Times New Roman", Times, serif;
+  font-size: 32px;
+
+  @media (max-width: 670px) {
+    font-size: 15px;
+    width: 100%;
   }
 `;
 
@@ -65,7 +68,7 @@ const FilterContainer = styled.div<{ display: boolean }>`
   border-radius: 6px;
 
   position: absolute;
-  bottom: -260px;
+  bottom: -320px;
   right: 1px;
 
   z-index: 2;
@@ -133,6 +136,26 @@ const CleanFilter = styled.div`
     width: 27px;
   }
 `;
+const Navigation = styled.div`
+  display: flex;
+  align-self: flex-end;
+  align-items: center;
+  gap: 30px;
+
+  margin-top: 80px;
+
+  color: #2069a8;
+
+  font-family: "Times New Roman", Times, serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  div {
+    &:hover {
+      color: #062e52a3;
+    }
+  }
+`;
 
 export {
   Container,
@@ -141,4 +164,6 @@ export {
   FilterBox,
   FilterOptions,
   CleanFilter,
+  Title,
+  Navigation,
 };

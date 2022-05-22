@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../components/Header";
-import { Container, UpperContainer } from "../Adoption/style";
-import { TitleContainer } from "../Home/style";
-import { Form, LowerContainer, Button } from "./style";
+import { Container, Navigation, UpperContainer } from "../Adoption/style";
+import { Form, LowerContainer, Button, Title } from "./style";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import {
   Divider,
@@ -12,6 +11,11 @@ import {
   styled,
 } from "@mui/material";
 import { ThreeDots } from "react-loader-spinner";
+import useAuth from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+import { getCitiesByState, getStates } from "../../helpers/ibge";
+import * as api from "../../services/api";
+import useAlert from "../../hooks/useAlert";
 
 const Input = styled("input")({
   display: "none",
@@ -24,28 +28,42 @@ export default function Share() {
     sex: "",
     age: "",
     size: "",
-    states: [],
-    cities: [],
+    state: "",
+    city: "",
     about: "",
   });
 
-  const autocompleteData = {
+  let autocompleteData = {
     name: "",
     species: ["Cachorro", "Gato"],
     sex: ["Macho", "Fêmea"],
     age: ["Filhote", "Adulto", "Idoso"],
     size: ["Pequeno", "Médio", "Grande"],
-    states: [],
-    cities: [],
+    state: "",
+    city: "",
     about: "",
   };
-
-  const [states, setStates] = useState<object>(["df"]);
-  const [cities, setCities] = useState<object>(["braslia"]);
+  const [states, setStates] = useState([]);
+  const [cities, setCities] = useState([]);
   const [loading, setLoading] = useState(false);
   const [image, setImage] = React.useState("");
   const imageRef = React.useRef(null);
   const [result, setResult] = React.useState<any | null>("");
+  const { auth } = useAuth();
+  const navigate = useNavigate();
+  const { setMessage } = useAlert();
+
+  useEffect(() => {
+    if (!auth) {
+      navigate("/logar");
+      return;
+    }
+    getStates().then((response) => setStates(response));
+  }, []);
+
+  function handleStateChange(value: any) {
+    getCitiesByState(value).then((response) => setCities(response));
+  }
 
   function uploader(e: any) {
     const imageFile = e.target.files[0];
@@ -62,25 +80,41 @@ export default function Share() {
     setFormData({ ...formData, [name]: value });
   }
 
-  function handleStatesChange(setFunction: any, value: any) {
-    setFunction(value);
-  }
-  function handleSubmit(e: any) {
+  async function handleSubmit(e: any) {
     e.preventDefault();
     setLoading(true);
 
     const data = new FormData();
     data.append("image", result.file);
     data.append("data", JSON.stringify(formData));
+
+    try {
+      await api.sharePet({ token: auth, data: data });
+      setLoading(false);
+      setMessage({
+        type: "success",
+        text: "Pet cadastrado com sucesso",
+      });
+    } catch (err) {
+      console.log(err);
+      setLoading(false);
+      setMessage({
+        type: "error",
+        text: "Não foi possível cadastrar seu pet no momento!Tente reduzir o tamanho da imagem",
+      });
+    }
   }
   return (
     <>
       <Container>
         <Header />
+        <Navigation>
+          <div onClick={() => navigate("/adotar")}>Quer adotar um Pet?</div>
+        </Navigation>
         <UpperContainer>
-          <TitleContainer className="title">
+          <Title>
             <h1>Cadastre um Pet</h1>
-          </TitleContainer>
+          </Title>
         </UpperContainer>
         <LowerContainer>
           <Divider style={{ width: "50%" }} />{" "}
@@ -187,9 +221,12 @@ export default function Share() {
               style={{
                 width: "50vw",
               }}
-              options={[states]}
+              options={states}
               autoComplete={true}
-              onInputChange={(e, value) => handleStatesChange(setStates, value)}
+              onInputChange={(e, value) => {
+                setFormData({ ...formData, state: value });
+                handleStateChange(value);
+              }}
               renderInput={(params) => (
                 <TextField
                   {...params}
@@ -205,9 +242,15 @@ export default function Share() {
               style={{
                 width: "50vw",
               }}
-              options={[cities]}
+              options={
+                states.length === 0
+                  ? ["Selecione o Estado"]
+                  : cities.map((city: any) => city.name)
+              }
               autoComplete={true}
-              onInputChange={(e, value) => handleStatesChange(setCities, value)}
+              onInputChange={(e, value) => {
+                setFormData({ ...formData, city: value });
+              }}
               renderInput={(params) => (
                 <TextField
                   {...params}

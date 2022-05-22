@@ -10,7 +10,10 @@ import Adoption from "./pages/Adoption/Adoption";
 import Share from "./pages/Share/Share";
 import UserProfile from "./pages/UserProfile/UserProfile";
 
+
 function App() {
+ 
+ 
   return (
     <AlertProvider>
       <AuthProvider>

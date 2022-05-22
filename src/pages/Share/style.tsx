@@ -79,5 +79,15 @@ const Button = styled.button<{ loading: boolean }>`
     background-color: #378dd8;
   }
 `;
+const Title = styled.h1`
+  color: #02182b;
+  font-family: "Patua One", "Times New Roman", Times, serif;
+  font-size: 17px;
 
-export { LowerContainer, Form, Button };
+  @media (max-width: 670px) {
+    font-size: 15px;
+    width: 100%;
+  }
+`;
+
+export { LowerContainer, Form, Button, Title };

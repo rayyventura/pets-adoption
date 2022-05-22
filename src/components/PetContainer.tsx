@@ -1,19 +1,34 @@
 import React from "react";
 import styled from "styled-components";
 import exempleImg from "../assets/banner.jpg";
+import { PetData } from "../services/api";
 
-export default function PetContainer() {
+export default function PetContainer({
+  id,
+  name,
+  species,
+  sex,
+  size,
+  age,
+  about,
+  image,
+  state,
+  city,
+}: PetData) {
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
   return (
     <>
       <Container>
         <ImageContainer>
-          <img src={exempleImg} alt="pet to be adopted" />
+          <img src={`${BASE_URL}/${image}`} alt="pet to be adopted" />
         </ImageContainer>
         <DescriptionContainer>
-          <h1>Nome do Pet</h1>
-          <p>Fêmea</p>
-          <p>9 meses</p>
-          <p>Campinas, São Paulo</p>
+          <h1>{name}</h1>
+          <p>{sex}</p>
+          <p>{age}</p>
+          <p>
+            {city}, {state}
+          </p>
         </DescriptionContainer>
       </Container>
     </>
@@ -21,7 +36,7 @@ export default function PetContainer() {
 }
 
 const Container = styled.div`
-  width: 250px;
+  width: 220px;
   height: 335px;
 
   box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
@@ -30,7 +45,7 @@ const Container = styled.div`
 
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
 `;
 
@@ -59,18 +74,15 @@ const DescriptionContainer = styled.div`
 
   font-family: "Times New Roman", Times, serif;
 
-  margin-top: 12px;
+  padding: 16px;
   h1 {
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 18px;
+    font-weight: 400;
     font-family: "Patua One", "Times New Roman", Times, serif;
     color: #108181;
     color: #378dd8;
 
     cursor: pointer;
-    /*  :hover {
-      color: #02182b;
-    } */
   }
   p {
     font-weight: 500;

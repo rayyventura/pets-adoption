@@ -7,7 +7,7 @@ import useAlert from "../../hooks/useAlert";
 import { useNavigate } from "react-router-dom";
 import TelefoneBrasileiroInput from "react-telefone-brasileiro";
 import Logo from "../../components/Logo";
-import background from "../../assets/background3.jpg";
+import background from "../../assets/background.jpg";
 
 export default function SignUp() {
   const [formData, setFormData] = useState({

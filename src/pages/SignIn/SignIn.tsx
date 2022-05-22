@@ -7,7 +7,7 @@ import * as api from "../../services/api";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Logo from "../../components/Logo";
-import background from "../../assets/background3.jpg";
+import background from "../../assets/background.jpg";
 
 export default function SignIn() {
   const [formData, setFormData] = useState({

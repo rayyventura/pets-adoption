@@ -3,6 +3,14 @@ import styled from "styled-components";
 const Container = styled.div`
   height: 100vh;
   background-color: #f3f4f6;
+
+  .load {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 60px;
+  }
 `;
 const LowerContainer = styled.div`
   padding: 10px;
@@ -22,20 +30,16 @@ const Banner = styled.div`
   justify-content: center;
   align-items: center;
 
-  margin: 23px 0 13px 0;
+  margin-top: 23px;
 
   img {
     height: 100%;
-    width: 100%;
+    width: 60%;
   }
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  box-shadow: 4px 1px 4px rgba(0, 0, 0, 0.25);
 `;
 
 const TitleContainer = styled.div`
-  margin: 9px 0 0px 30px;
+  margin: 80px 0 0px 30px;
   h1 {
     color: #02182b;
     font-family: "Patua One", "Times New Roman", Times, serif;

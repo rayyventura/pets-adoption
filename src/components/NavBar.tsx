@@ -22,38 +22,36 @@ const Options = styled.div`
   align-items: center;
   gap: 5px;
 
-  margin-bottom: 40px;
+  margin: 5px 0 40px 0;
   .adopt {
-    background-color: #dd702ca6;
+    background-color: #dd702c;
     &:hover {
-      background-color: #dd702c;
+      background-color: #dd702ce8;
     }
   }
   .share {
-    background-color: #378dd897;
+    background-color: #378dd8;
     &:hover {
-      background-color: #378dd8;
+      background-color: #378dd8e6;
     }
   }
 `;
 
 const Button = styled.button`
   all: unset;
-  width: 45%;
+  width: 40%;
 
   padding: 8px;
 
   color: white;
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 18px;
+  font-weight: 500;
   font-family: "Oswald", "sans-serif";
   border-radius: 6px;
 
   display: flex;
   justify-content: center;
   align-items: center;
-
-  border-radius: 6px;
 
   cursor: pointer;
 `;
