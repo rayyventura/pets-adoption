@@ -23,6 +23,10 @@ export default function SignIn() {
     if (auth) {
       navigate("/");
     }
+    setMessage({
+      type: "success",
+      text: "Você precisa está logado para adotar e divulgar",
+    });
   }, [auth]);
 
   function handleChange({ target }: { target: any }) {

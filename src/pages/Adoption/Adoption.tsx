@@ -42,6 +42,7 @@ export default function Adoption() {
   const [filteredData, setFilteredData] = useState<any>([]);
   const [data, setData] = useState<any>([]);
   const [filterData, setFilterData] = useState<any>();
+  const { setMessage } = useAuth();
 
   async function loadPets() {
     try {
@@ -90,6 +91,7 @@ export default function Adoption() {
   useEffect(() => {
     if (!auth) {
       navigate("/logar");
+
       return;
     }
     getStates().then((response) => setStates(response));

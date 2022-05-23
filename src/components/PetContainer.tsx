@@ -27,8 +27,7 @@ export default function PetContainer({
         <DescriptionContainer>
           <h1>{name}</h1>
           <p>{sex}</p>
-          <p>{age}</p>
-          <p>
+          <p style={{ fontSize: "14px" }}>
             {city}, {state}
           </p>
         </DescriptionContainer>
@@ -95,7 +94,7 @@ const DescriptionContainer = styled.div`
   }
   p {
     font-weight: 500;
-    font-size: 18px;
+    font-size: 15px;
     color: #747474ce;
   }
   @media (max-width: 510px) {
