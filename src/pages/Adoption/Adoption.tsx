@@ -292,6 +292,12 @@ export default function Adoption() {
             : data?.map((pet: any, i: any) => (
                 <PetContainer {...pet} key={pet.id + pet.city} />
               ))}
+          {filterMode && filteredData?.length === 0 && (
+            <div className="not-found">
+              <p>Nada encontrado 💡</p>
+              <p>Experimente trocar os filtros</p>
+            </div>
+          )}
         </LowerContainer>
       </InfiniteScroll>
     </Container>

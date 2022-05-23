@@ -21,6 +21,14 @@ const LowerContainer = styled.div`
   flex-wrap: wrap;
 
   gap: 9px;
+
+  .not-found {
+    margin-top: 50px;
+    color: #666666;
+    font-size: 20px;
+    font-family: "Times New Roman", Times, serif;
+    text-align: center;
+  }
 `;
 const Banner = styled.div`
   width: 100%;

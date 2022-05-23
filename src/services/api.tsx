@@ -55,6 +55,13 @@ async function getPets(page: number) {
 
   return pets;
 }
+async function getLatestPets(page: number) {
+  const pets = await baseAPI.get<PetData[]>(
+    `pets/latest?offset=${page ? page * 10 : 0}`
+  );
+
+  return pets;
+}
 async function getFilteredPets(token: string, page: number, filter: object) {
   const config = createConfig(token);
   const pets = await baseAPI.post(
@@ -86,4 +93,5 @@ export {
   getFilteredPets,
   getUniquePet,
   getByUserId,
+  getLatestPets,
 };

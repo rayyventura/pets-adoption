@@ -17,7 +17,7 @@ export default function Home() {
 
   async function loadPets() {
     try {
-      const pets = await api.getPets(page);
+      const pets = await api.getLatestPets(page);
       setData(data.concat([...pets.data]));
       if (!data) return;
       setPage(page + 1);
