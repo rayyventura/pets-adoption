@@ -51,5 +51,18 @@ const UpperContainer = styled.div`
     }
   }
 `;
+const Title = styled.h1`
+  font-family: "Patua One", "Times New Roman", Times, serif;
+  font-size: 32px;
+  color: #2a79be;
+  font-size: 22px;
+  padding-left: 80px;
 
-export { Container, UpperContainer };
+  @media (max-width: 900px) {
+    font-size: 15px;
+    width: 100%;
+    padding-left: 5px;
+  }
+`;
+
+export { Container, UpperContainer, Title };

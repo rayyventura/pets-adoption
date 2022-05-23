@@ -1,7 +1,7 @@
 import React from "react";
+import { ThreeDots } from "react-loader-spinner";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import exempleImg from "../assets/banner.jpg";
 import { PetData } from "../services/api";
 
 export default function PetContainer({
@@ -22,7 +22,7 @@ export default function PetContainer({
     <>
       <Container onClick={() => navigate(`/pets/${id}`)}>
         <ImageContainer>
-          <img src={`${BASE_URL}/${image}`} alt="pet" />
+          <img src={`${BASE_URL}/${image}`} alt="" />
         </ImageContainer>
         <DescriptionContainer>
           <h1>{name}</h1>
