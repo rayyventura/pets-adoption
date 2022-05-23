@@ -29,6 +29,8 @@ export default function SignIn() {
     });
   }, [auth]);
 
+  setTimeout(() => setMessage(null), 3000);
+
   function handleChange({ target }: { target: any }) {
     setFormData({ ...formData, [target.name]: target.value });
   }
