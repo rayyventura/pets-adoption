@@ -19,7 +19,7 @@ export default function UserProfile() {
 
   useEffect(() => {
     loadPets();
-  }, []);
+  }, [id]);
 
   async function loadPets() {
     const petData = await api.getByUserId(auth, id);

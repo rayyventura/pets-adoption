@@ -17,7 +17,6 @@ export default function Header() {
       setLoggedIn(true);
     }
   }, [auth]);
-  console.log(user);
 
   function logout() {
     localStorage.removeItem("auth");
