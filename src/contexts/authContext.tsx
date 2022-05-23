@@ -13,12 +13,14 @@ const AuthContext = createContext<any>(null);
 
 export function AuthProvider({ children }: AuxProps) {
   const persistedAuth = JSON.parse(localStorage.getItem("auth")!);
+  const persistedUser = JSON.parse(localStorage.getItem("user")!);
   const [auth, setAuth] = useState(persistedAuth);
-  const [user, setUser] = useState<any>();
+  const [user, setUser] = useState(persistedUser);
 
   function signin(authData: AuthData, user: any) {
     setAuth(authData);
     localStorage.setItem("auth", JSON.stringify(authData));
+    localStorage.setItem("user", JSON.stringify(user));
     setUser(user);
   }
 

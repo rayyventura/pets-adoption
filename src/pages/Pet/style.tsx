@@ -34,12 +34,13 @@ const UpperContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 20px;
+  flex-direction: row-reverse;
 
   @media (max-width: 960px) {
     flex-direction: column;
     flex-direction: column-reverse;
-
-    margin-top: 100px;
+    gap: 5px;
+    margin-top: 60px;
     height: 1000px;
   }
 `;
@@ -95,7 +96,7 @@ const Title = styled.div`
     font-family: "Times New Roman", serif;
   }
   @media (max-width: 500px) {
-    margin: 40px 0 0px 15px;
+    margin: 0px 0 0px 15px;
     h1 {
       font-size: 19px;
     }
@@ -189,7 +190,7 @@ const Button = styled.button<{ loading: boolean }>`
   }
 `;
 const OtherPets = styled.div`
-  margin-top: 20px;
+  margin-top: 0px;
 `;
 
 export {

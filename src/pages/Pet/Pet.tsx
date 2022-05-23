@@ -30,9 +30,9 @@ export default function Pet() {
   const { auth } = useAuth();
   const [data, setData] = useState<any>();
   const [otherPets, setOtherPets] = useState<any>([]);
-  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(0);
+  const navigate = useNavigate();
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   useEffect(() => {

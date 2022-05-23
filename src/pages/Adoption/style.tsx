@@ -56,6 +56,7 @@ const Title = styled.h1`
   @media (max-width: 670px) {
     font-size: 15px;
     width: 100%;
+    padding-left: 5px;
   }
 `;
 

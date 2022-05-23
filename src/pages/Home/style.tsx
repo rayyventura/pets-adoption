@@ -53,7 +53,7 @@ const Banner = styled.div`
 `;
 
 const TitleContainer = styled.div`
-  margin: 80px 0 0px 30px;
+  margin: 80px 0 0px 40px;
   h1 {
     color: #02182b;
     font-family: "Patua One", "Times New Roman", Times, serif;

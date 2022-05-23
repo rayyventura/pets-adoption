@@ -71,4 +71,19 @@ async function getUniquePet(token: string, id: any) {
 
   return pet;
 }
-export { createUser, sharePet, signin, getPets, getFilteredPets, getUniquePet };
+
+async function getByUserId(token: string, id: any) {
+  const config = createConfig(token);
+  const pets = await baseAPI.get(`pets/users/${id}`, config);
+
+  return pets;
+}
+export {
+  createUser,
+  sharePet,
+  signin,
+  getPets,
+  getFilteredPets,
+  getUniquePet,
+  getByUserId,
+};
