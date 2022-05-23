@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import exempleImg from "../assets/banner.jpg";
 import { PetData } from "../services/api";
@@ -16,11 +17,12 @@ export default function PetContainer({
   city,
 }: PetData) {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
+  const navigate = useNavigate();
   return (
     <>
-      <Container>
+      <Container onClick={() => navigate(`/pets/${id}`)}>
         <ImageContainer>
-          <img src={`${BASE_URL}/${image}`} alt="pet to be adopted" />
+          <img src={`${BASE_URL}/${image}`} alt="pet" />
         </ImageContainer>
         <DescriptionContainer>
           <h1>{name}</h1>

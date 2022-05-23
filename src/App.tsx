@@ -9,11 +9,9 @@ import Alert from "./components/Alert";
 import Adoption from "./pages/Adoption/Adoption";
 import Share from "./pages/Share/Share";
 import UserProfile from "./pages/UserProfile/UserProfile";
-
+import Pet from "./pages/Pet/Pet";
 
 function App() {
- 
- 
   return (
     <AlertProvider>
       <AuthProvider>
@@ -24,7 +22,8 @@ function App() {
             <Route path="/logar" element={<SignIn />} />
             <Route path="/adotar" element={<Adoption />} />
             <Route path="/divulgar" element={<Share />} />
-            <Route path="/perfil" element={<UserProfile />} />
+            <Route path="/usuarios/:id" element={<UserProfile />} />
+            <Route path="/pets/:id" element={<Pet />} />
           </Routes>
         </BrowserRouter>
         <Alert />

@@ -45,7 +45,7 @@ const Button = styled.button`
 
   color: white;
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 400;
   font-family: "Oswald", "sans-serif";
   border-radius: 6px;
 

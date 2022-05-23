@@ -14,11 +14,10 @@ export default function Home() {
   const [page, setPage] = useState(0);
   const [data, setData] = useState<any>([]);
   const navigate = useNavigate();
-  const { auth } = useAuth();
 
   async function loadPets() {
     try {
-      const pets = auth && (await api.getPets(page));
+      const pets = await api.getPets(page);
       setData(data.concat([...pets.data]));
       if (!data) return;
       setPage(page + 1);

@@ -11,6 +11,7 @@ import background from "../../assets/background.jpg";
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
+    name: "",
     email: "",
     password: "",
     passwordConfirm: "",
@@ -49,6 +50,7 @@ export default function SignUp() {
     }
     try {
       await api.createUser({
+        name: formData.name,
         email: formData.email,
         password: formData.password,
         whatsappNumber: formData.whatsappNumber.replace(/[^0-9,]*/g, ""),
@@ -58,7 +60,7 @@ export default function SignUp() {
       console.log(err);
       setMessage({
         type: "error",
-        text: "Erro ao realizar seu catastro. Tente novamente",
+        text: "Erro ao realizar seu cadastro. Tente novamente",
       });
       setLoading(false);
     }
@@ -69,6 +71,14 @@ export default function SignUp() {
       <LeftContainer>
         <Logo type="form" />
         <Form onSubmit={handleSubmit}>
+          <Input
+            type="text"
+            placeholder="nome"
+            onChange={(e) => handleChange(e)}
+            name="name"
+            value={formData.name}
+            required
+          />
           <Input
             type="email"
             placeholder="e-mail"

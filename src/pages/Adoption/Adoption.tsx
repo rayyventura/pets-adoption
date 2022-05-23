@@ -41,7 +41,7 @@ export default function Adoption() {
   const [filteredPage, setFilteredPage] = useState(0);
   const [filteredData, setFilteredData] = useState<any>([]);
   const [data, setData] = useState<any>([]);
-  let filterData = {};
+  const [filterData, setFilterData] = useState<any>();
 
   async function loadPets() {
     try {
@@ -53,17 +53,35 @@ export default function Adoption() {
       console.log(error);
     }
   }
-  async function getFilteredPets(loadPage: boolean, filter: object) {
+  async function getFilteredPets(filter: object) {
+    const initialPage = 0;
+    setFilteredPage(1);
     setFilterMode(true);
-    filterData = { ...filterData, filter };
+    console.log({ ...filterData, ...filter });
+    setFilterData({ ...filterData, ...filter });
+    try {
+      const pets =
+        auth &&
+        (await api.getFilteredPets(auth, initialPage, {
+          ...filterData,
+          ...filter,
+        }));
+      setFilteredData([...pets.data]);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  async function getFilteredPetsInfiniteScroll() {
+    setFilterMode(true);
+
     try {
       const pets =
         auth && (await api.getFilteredPets(auth, filteredPage, filterData));
-      setFilteredData([...pets.data]);
-      console.log(pets.data);
+      setFilteredData(filteredData.concat([...pets.data]));
+
       if (!filteredData) return;
-      console.log(loadPage);
-      !loadPage && setFilteredPage(filteredPage + 1);
+
+      setFilteredPage(filteredPage + 1);
     } catch (error) {
       console.log(error);
     }
@@ -120,7 +138,7 @@ export default function Adoption() {
                 selected={filter.species === "dog"}
                 onClick={() => {
                   setFilter({ ...filter, species: "dog" });
-                  getFilteredPets(true, { species: "Cachorro" });
+                  getFilteredPets({ species: "Cachorro" });
                 }}
               >
                 Cachorro
@@ -129,7 +147,7 @@ export default function Adoption() {
                 selected={filter.species === "cat"}
                 onClick={() => {
                   setFilter({ ...filter, species: "cat" });
-                  getFilteredPets(true, { species: "Gato" });
+                  getFilteredPets({ species: "Gato" });
                 }}
               >
                 Gato
@@ -143,7 +161,7 @@ export default function Adoption() {
                 selected={filter.sex === "male"}
                 onClick={() => {
                   setFilter({ ...filter, sex: "male" });
-                  getFilteredPets(true, { sex: "Macho" });
+                  getFilteredPets({ sex: "Macho" });
                 }}
               >
                 Macho
@@ -152,7 +170,7 @@ export default function Adoption() {
                 selected={filter.sex === "female"}
                 onClick={() => {
                   setFilter({ ...filter, sex: "female" });
-                  getFilteredPets(true, { sex: "Fêmea" });
+                  getFilteredPets({ sex: "Fêmea" });
                 }}
               >
                 Fêmea
@@ -166,7 +184,7 @@ export default function Adoption() {
                 selected={filter.size === "small"}
                 onClick={() => {
                   setFilter({ ...filter, size: "small" });
-                  getFilteredPets(true, { size: "Pequeno" });
+                  getFilteredPets({ size: "Pequeno" });
                 }}
               >
                 Pequeno
@@ -175,7 +193,7 @@ export default function Adoption() {
                 selected={filter.size === "avarage"}
                 onClick={() => {
                   setFilter({ ...filter, size: "avarage" });
-                  getFilteredPets(true, { size: "Médio" });
+                  getFilteredPets({ size: "Médio" });
                 }}
               >
                 Médio
@@ -184,7 +202,7 @@ export default function Adoption() {
                 selected={filter.size === "big"}
                 onClick={() => {
                   setFilter({ ...filter, size: "big" });
-                  getFilteredPets(true, { size: "Grande" });
+                  getFilteredPets({ size: "Grande" });
                 }}
               >
                 Grande
@@ -201,7 +219,7 @@ export default function Adoption() {
                 onInputChange={(e, value) => {
                   setFilter({ ...filter, state: value });
                   handleStateChange(value);
-                  getFilteredPets(true, { state: value });
+                  getFilteredPets({ state: value });
                 }}
                 renderInput={(params) => (
                   <TextField
@@ -224,7 +242,7 @@ export default function Adoption() {
                 autoComplete={true}
                 onInputChange={(e, value) => {
                   setFilter({ ...filter, city: value });
-                  getFilteredPets(true, { city: value });
+                  getFilteredPets({ city: value });
                 }}
                 renderInput={(params) => (
                   <TextField
@@ -247,7 +265,7 @@ export default function Adoption() {
       </UpperContainer>
       <InfiniteScroll
         pageStart={filterMode ? filteredPage : page}
-        loadMore={filterMode ? () => getFilteredPets : loadPets}
+        loadMore={filterMode ? getFilteredPetsInfiniteScroll : loadPets}
         hasMore={
           filterMode
             ? filteredData?.length < filteredPage * 10
@@ -269,10 +287,10 @@ export default function Adoption() {
         <LowerContainer>
           {filterMode
             ? filteredData?.map((pet: any, i: any) => (
-                <PetContainer {...pet} key={pet.id} />
+                <PetContainer {...pet} key={pet.id + pet.city} />
               ))
             : data?.map((pet: any, i: any) => (
-                <PetContainer {...pet} key={pet.id} />
+                <PetContainer {...pet} key={pet.id + pet.city} />
               ))}
         </LowerContainer>
       </InfiniteScroll>

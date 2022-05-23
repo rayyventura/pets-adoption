@@ -14,6 +14,7 @@ function createConfig(token: string) {
 }
 
 interface User {
+  name: string;
   email: string;
   password: string;
   whatsappNumber: string;
@@ -23,7 +24,7 @@ async function createUser(user: User) {
   await baseAPI.post("/users/signup", user);
 }
 
-async function signin(data: Omit<User, "whatsappNumber">) {
+async function signin(data: Omit<Omit<User, "whatsappNumber">, "name">) {
   const token = await baseAPI.post("/users/signin", data);
   return token;
 }
@@ -48,19 +49,26 @@ async function sharePet({ token, data }: SharePet) {
   await baseAPI.post("pets/share", data, config);
 }
 async function getPets(page: number) {
-  const pets = await baseAPI.get<PetData>(`pets/${page ? page * 10 : 0}`);
+  const pets = await baseAPI.get<PetData[]>(
+    `pets?offset=${page ? page * 10 : 0}`
+  );
 
   return pets;
 }
 async function getFilteredPets(token: string, page: number, filter: object) {
   const config = createConfig(token);
-  console.log(filter);
-  const pets = await baseAPI.post<PetData>(
-    `pets/filter/${page ? page * 10 : 0}`,
-    filter,
+  const pets = await baseAPI.post(
+    `pets/filter?offset=${page ? page * 10 : 0}`,
+    { filter },
     config
   );
 
   return pets;
 }
-export { createUser, sharePet, signin, getPets, getFilteredPets };
+async function getUniquePet(token: string, id: any) {
+  const config = createConfig(token);
+  const pet = await baseAPI.get(`pets/${id}`, config);
+
+  return pet;
+}
+export { createUser, sharePet, signin, getPets, getFilteredPets, getUniquePet };

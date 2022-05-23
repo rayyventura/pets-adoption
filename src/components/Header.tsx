@@ -9,7 +9,7 @@ import { Divider } from "@mui/material";
 export default function Header() {
   const navigate = useNavigate();
   const [loggedIn, setLoggedIn] = useState(false);
-  const { auth, setAuth } = useAuth();
+  const { auth, setAuth, user } = useAuth();
   const [profileOption, setProfileOption] = useState(false);
 
   useEffect(() => {
@@ -36,7 +36,9 @@ export default function Header() {
           />
           {profileOption && (
             <UserOptions>
-              <div onClick={() => navigate("/perfil")}>Meu perfil</div>
+              <div onClick={() => navigate(`/usuarios/${user.id}`)}>
+                Meu perfil
+              </div>
               <Divider style={{ width: "100%" }} />
               <div onClick={() => logout()}>Sair</div>
             </UserOptions>

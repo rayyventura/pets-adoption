@@ -22,7 +22,7 @@ export default function SignIn() {
   useEffect(() => {
     if (auth) {
       navigate("/");
-    } //eslint-disable-next-line
+    }
   }, [auth]);
 
   function handleChange({ target }: { target: any }) {
@@ -42,7 +42,7 @@ export default function SignIn() {
     }
     try {
       const { data } = await api.signin(formData);
-      await signin(data.token);
+      await signin(data.token, data.user);
       navigate("/");
     } catch (err) {
       console.log(err);
