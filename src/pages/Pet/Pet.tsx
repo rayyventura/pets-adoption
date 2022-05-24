@@ -118,10 +118,10 @@ export default function Pet() {
               `,
                   confirmButtonColor: "#378dd8e6",
                   background: "#e2dbd6",
-
+                  color: "#02182b",
                   imageUrl: `${SwalImage}`,
-                  imageWidth: 350,
-                  imageHeight: 200,
+                  imageWidth: 150,
+                  imageHeight: 90,
                   imageAlt: "pets",
                   footer: `<a href="https://wa.me/${
                     data.user.whatsappNumber
