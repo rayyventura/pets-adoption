@@ -16,6 +16,7 @@ export function AuthProvider({ children }: AuxProps) {
   const persistedUser = JSON.parse(localStorage.getItem("user")!);
   const [auth, setAuth] = useState(persistedAuth);
   const [user, setUser] = useState(persistedUser);
+  const [lastPage, setLastPage] = useState<any>();
 
   function signin(authData: AuthData, user: any) {
     setAuth(authData);
@@ -25,7 +26,9 @@ export function AuthProvider({ children }: AuxProps) {
   }
 
   return (
-    <AuthContext.Provider value={{ auth, signin, setAuth, user }}>
+    <AuthContext.Provider
+      value={{ auth, signin, setAuth, user, lastPage, setLastPage }}
+    >
       {children}
     </AuthContext.Provider>
   );

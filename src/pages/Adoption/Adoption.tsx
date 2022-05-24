@@ -35,14 +35,13 @@ export default function Adoption() {
     state: "",
   });
   const [filterMode, setFilterMode] = useState(false);
-  const { auth } = useAuth();
+  const { auth, setLastPage } = useAuth();
   const navigate = useNavigate();
   const [page, setPage] = useState(0);
   const [filteredPage, setFilteredPage] = useState(0);
   const [filteredData, setFilteredData] = useState<any>([]);
   const [data, setData] = useState<any>([]);
   const [filterData, setFilterData] = useState<any>();
-  const { setMessage } = useAuth();
 
   async function loadPets() {
     try {
@@ -90,6 +89,7 @@ export default function Adoption() {
 
   useEffect(() => {
     if (!auth) {
+      setLastPage("adotar");
       navigate("/logar");
 
       return;

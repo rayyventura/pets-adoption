@@ -17,7 +17,7 @@ export default function SignIn() {
   const [loading, setLoading] = useState<boolean>(false);
   const { setMessage } = useAlert();
   const navigate = useNavigate();
-  const { auth, signin } = useAuth();
+  const { auth, signin, lastPage } = useAuth();
 
   useEffect(() => {
     if (auth) {
@@ -49,7 +49,7 @@ export default function SignIn() {
     try {
       const { data } = await api.signin(formData);
       await signin(data.token, data.user);
-      navigate("/");
+      navigate(`/${lastPage}`);
     } catch (err) {
       console.log(err);
       setLoading(false);

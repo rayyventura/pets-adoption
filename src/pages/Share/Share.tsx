@@ -49,17 +49,18 @@ export default function Share() {
   const [image, setImage] = React.useState("");
   const imageRef = React.useRef(null);
   const [result, setResult] = React.useState<any | null>("");
-  const { auth } = useAuth();
+  const { auth, setLastPage } = useAuth();
   const navigate = useNavigate();
   const { setMessage } = useAlert();
 
   useEffect(() => {
     if (!auth) {
+      setLastPage("divulgar");
       navigate("/logar");
       return;
     }
     getStates().then((response) => setStates(response));
-  }, []);
+  }, [auth]);
 
   function handleStateChange(value: any) {
     getCitiesByState(value).then((response) => setCities(response));
