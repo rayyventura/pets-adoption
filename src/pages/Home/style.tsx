@@ -52,13 +52,14 @@ const Banner = styled.div`
   }
   @media (max-width: 910px) {
     height: 200px;
+    margin-top: 100px;
   }
   @media (max-width: 510px) {
-    margin-top: 60px;
+    margin-top: 80px;
     height: 150px;
   }
   @media (max-width: 290px) {
-    margin-top: 64px;
+    margin-top: 94px;
     height: 100px;
   }
 `;

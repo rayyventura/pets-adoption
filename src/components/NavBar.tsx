@@ -59,13 +59,12 @@ const Button = styled.button`
   cursor: pointer;
 
   @media (max-width: 500px) {
-    padding: 3px 10px;
-    padding: 2px;
-    font-size: 14px;
+    padding: 8px;
+    font-size: 16px;
     width: 90%;
   }
   @media (max-width: 290px) {
-    font-size: 12px;
+    font-size: 14px;
   }
 `;
 
