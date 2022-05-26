@@ -59,7 +59,7 @@ const LeftContainer = styled.div`
     width: 100%;
     align-items: center;
     justify-content: flex-start;
-    margin-top: 80px;
+    margin-top: 100px;
   }
 `;
 const RightContainer = styled.div`
