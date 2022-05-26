@@ -105,6 +105,7 @@ export default function Share() {
       });
     }
   }
+
   return (
     <>
       <Container>
@@ -126,6 +127,7 @@ export default function Share() {
               style={{
                 width: "50vw",
               }}
+              className="teste"
               variant="standard"
               type="string"
               required
