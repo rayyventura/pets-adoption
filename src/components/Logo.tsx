@@ -38,6 +38,14 @@ const LogoContainer = styled.div<{ type: string }>`
   .pet {
     color: #378dd8;
   }
+  @media (max-width: 500px) {
+    img {
+      width: 38px;
+    }
+    p {
+      font-size: 14px;
+    }
+  }
 `;
 
 const LogoName = styled.div`

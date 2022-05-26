@@ -124,6 +124,11 @@ const UserLogo = styled.img`
   height: 53px;
 
   object-fit: cover;
+
+  @media (max-width: 500px) {
+    height: 38px;
+    width: 38px;
+  }
 `;
 
 const UserOptions = styled.div`

@@ -40,15 +40,8 @@ const UpperContainer = styled.div`
     flex-direction: column;
     flex-direction: column-reverse;
     gap: 5px;
-    margin-top: 20px;
-    height: 1000px;
-  }
-  @media (max-width: 500px) {
-    flex-direction: column;
-    flex-direction: column-reverse;
-    gap: 5px;
-    margin-top: 20px;
-    height: 700px;
+    margin-top: 60px;
+    height: 670px;
   }
 `;
 const LeftContainer = styled.div`
@@ -63,12 +56,10 @@ const LeftContainer = styled.div`
   margin-left: 40px;
   @media (max-width: 960px) {
     margin-left: 0px;
-  }
-  @media (max-width: 500px) {
-    height: 50%;
-    justify-content: flex-start;
+    width: 100%;
     align-items: center;
-    width: 90%;
+    justify-content: flex-start;
+    margin-top: 80px;
   }
 `;
 const RightContainer = styled.div`
@@ -76,7 +67,7 @@ const RightContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  height: 50%;
+  height: 100%;
 
   width: 50%;
 
@@ -89,18 +80,7 @@ const RightContainer = styled.div`
   }
   @media (max-width: 960px) {
     width: 90%;
-    img {
-    margin-top: 80px;
-    height:80%
-    width: 100%;
-    }
-    @media (max-width: 500px) {
-   align-items:flex-end;
-    img {
-    margin-top: 10px;
-    height:80%;
-    width: 100%;
-    }
+    height: 60%;
   }
 `;
 const Title = styled.div`
