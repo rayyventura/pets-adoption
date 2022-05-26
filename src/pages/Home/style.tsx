@@ -44,6 +44,9 @@ const Banner = styled.div`
     height: 100%;
     width: 60%;
     @media (max-width: 910px) {
+      width: 50%;
+    }
+    @media (max-width: 600px) {
       width: 100%;
     }
   }
