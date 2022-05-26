@@ -14,6 +14,11 @@ export default function Home() {
   const [page, setPage] = useState(0);
   const [data, setData] = useState<any>([]);
   const navigate = useNavigate();
+  const { setLastPage } = useAuth();
+
+  useEffect(() => {
+    setLastPage("");
+  }, []);
 
   async function loadPets() {
     try {

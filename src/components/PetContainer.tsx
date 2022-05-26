@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ThreeDots } from "react-loader-spinner";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -18,6 +18,7 @@ export default function PetContainer({
 }: PetData) {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const navigate = useNavigate();
+
   return (
     <>
       <Container onClick={() => navigate(`/pets/${id}`)}>

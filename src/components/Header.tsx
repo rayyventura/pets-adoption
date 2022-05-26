@@ -9,7 +9,7 @@ import { Divider } from "@mui/material";
 export default function Header() {
   const navigate = useNavigate();
   const [loggedIn, setLoggedIn] = useState(false);
-  const { auth, setAuth, user } = useAuth();
+  const { auth, setAuth, user, setLastPage } = useAuth();
   const [profileOption, setProfileOption] = useState(false);
 
   useEffect(() => {
@@ -22,6 +22,7 @@ export default function Header() {
     localStorage.removeItem("auth");
     setLoggedIn(false);
     setAuth(null);
+    setLastPage("");
   }
   return (
     <HeaderContainer>
