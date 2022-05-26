@@ -54,7 +54,7 @@ const Title = styled.h1`
   font-size: 32px;
 
   @media (max-width: 670px) {
-    font-size: 15px;
+    font-size: 23px;
     width: 100%;
     padding-left: 5px;
   }
