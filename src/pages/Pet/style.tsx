@@ -40,7 +40,7 @@ const UpperContainer = styled.div`
     flex-direction: column;
     flex-direction: column-reverse;
     gap: 5px;
-    margin-top: 60px;
+    margin-top: 80px;
     height: 670px;
   }
 `;
