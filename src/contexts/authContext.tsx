@@ -16,7 +16,7 @@ export function AuthProvider({ children }: AuxProps) {
   const persistedUser = JSON.parse(localStorage.getItem("user")!);
   const [auth, setAuth] = useState(persistedAuth);
   const [user, setUser] = useState(persistedUser);
-  const [lastPage, setLastPage] = useState<any>();
+  const [lastPage, setLastPage] = useState<any>("logar");
 
   function signin(authData: AuthData, user: any) {
     setAuth(authData);
