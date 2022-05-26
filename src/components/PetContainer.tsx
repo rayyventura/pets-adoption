@@ -51,8 +51,8 @@ const Container = styled.div`
   flex-direction: column;
 
   @media (max-width: 510px) {
-    width: 230px;
-    height: 325px;
+    width: 270px;
+    height: 355px;
   }
 `;
 
