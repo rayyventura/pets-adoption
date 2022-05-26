@@ -35,6 +35,9 @@ const Options = styled.div`
       background-color: #378dd8e6;
     }
   }
+  @media (max-width: 500px) {
+    flex-direction: column;
+  }
 `;
 
 const Button = styled.button`
@@ -59,6 +62,7 @@ const Button = styled.button`
     padding: 3px 10px;
     padding: 2px;
     font-size: 14px;
+    width: 90%;
   }
   @media (max-width: 290px) {
     font-size: 12px;

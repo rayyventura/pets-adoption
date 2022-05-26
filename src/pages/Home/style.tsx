@@ -44,14 +44,14 @@ const Banner = styled.div`
     height: 100%;
     width: 60%;
     @media (max-width: 910px) {
-      width: 50%;
+      width: 100%;
     }
   }
   @media (max-width: 910px) {
     height: 200px;
   }
   @media (max-width: 510px) {
-    margin-top: 44px;
+    margin-top: 60px;
     height: 150px;
   }
   @media (max-width: 290px) {
