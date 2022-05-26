@@ -62,6 +62,7 @@ const Button = styled.button`
     padding: 8px;
     font-size: 16px;
     width: 90%;
+    font-weight: 700;
   }
   @media (max-width: 290px) {
     font-size: 14px;
