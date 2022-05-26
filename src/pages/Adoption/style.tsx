@@ -42,7 +42,7 @@ const UpperContainer = styled.div`
   @media (max-width: 670px) {
     font-size: 18px;
     width: 100%;
-    padding: 100px 10px 0px 0px;
+    padding-right: 10px;
     img {
       margin-right: 0px;
     }
